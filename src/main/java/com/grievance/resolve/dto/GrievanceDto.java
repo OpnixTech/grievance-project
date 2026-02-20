@@ -2,6 +2,8 @@ package com.grievance.resolve.dto;
 
 import java.time.LocalDateTime;
 
+import com.grievance.resolve.entity.Status;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GrievanceDto {
-
+	
 	private Long id;
 	private String username;
 	private String title;
@@ -19,7 +21,12 @@ public class GrievanceDto {
 	private Double Longitude;
 	private String department;
 	private String ticketNumber;
-	private String status="pending";
+	private String state;
+	private String district;
+	private String city;
+	private String issueType;
+	private Status status;
 	private LocalDateTime createdAt=LocalDateTime.now();
+
 	
 }

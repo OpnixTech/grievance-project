@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.grievance.resolve.dto.GrievanceDto;
 import com.grievance.resolve.entity.Grievance;
+import com.grievance.resolve.entity.Status;
 import com.grievance.resolve.mapper.GrievanceMapper;
+import com.grievance.resolve.repository.AuthorityRepository;
 import com.grievance.resolve.repository.GrievanceRepository;
 
 @Service
@@ -22,13 +24,25 @@ public class GrievanceService {
 	@Autowired
 	private GrievanceMapper grievanceMapper;
 	
+	@Autowired
+	private AuthorityRepository authorityRepository;
+	
 	
 	public GrievanceDto createGrievance(GrievanceDto grievanceDto) {
 		Grievance grievance=grievanceMapper.toEntity(grievanceDto);
-		grievance.setStatus("pending");
+		grievance.setStatus(Status.PENDING);
 		grievance.setTicketNumber(generateTicketNumber());
-		grievanceRepository.save(grievance);
-		return grievanceMapper.toDto(grievance);
+		authorityRepository.findByDepartmentTypeAndStateAndCityAndDistrict(
+				grievance.getIssueType(),
+				grievance.getState(),
+				grievance.getDistrict(),
+				grievance.getCity()
+	).ifPresent(authority -> {
+		grievance.setAssignedAuthority(authority);
+		grievance.setStatus(Status.ASSIGNED);
+	});
+		Grievance saved=grievanceRepository.save(grievance);
+		return grievanceMapper.toDto(saved);
 	}
 	
 	public List<GrievanceDto> getUserGrievance(String username){

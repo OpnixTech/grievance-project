@@ -7,9 +7,12 @@ import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,10 +38,17 @@ public class Grievance {
 	private Double Longitude;
 	private String department;
 	private String ticketNumber;
-	private String status="pending";
+	private String state;
+	private String district;
+	private String city;
+	private String issueType;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	private LocalDateTime createdAt=LocalDateTime.now();
 	
 	@ManyToOne
+	@JoinColumn(name="authority_id")
 	private Authority assignedAuthority;
 	
 }

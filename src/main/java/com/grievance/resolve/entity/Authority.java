@@ -28,7 +28,10 @@ public class Authority {
 	private String email;
 	private String password;
 	private String role="AUTHORITY";
-	private String assignedArea;
+	private String state;
+	private String city;
+	private String district;
+	private String departmentType;
 	
 	@OneToMany(mappedBy = "assignedAuthority")
 	private List<Grievance> assignedGrievances;
