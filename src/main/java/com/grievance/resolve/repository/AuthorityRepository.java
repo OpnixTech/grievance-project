@@ -15,5 +15,7 @@ public interface AuthorityRepository extends JpaRepository<Authority, Long>{
 			String district,
 			String city
 			);
+	
+	Optional<Authority> findByEmail(String email);
 
 }

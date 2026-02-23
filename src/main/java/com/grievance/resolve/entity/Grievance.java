@@ -34,8 +34,8 @@ public class Grievance {
 	private String username;
 	private String title;
 	private String description;
-	private Double lattitude;
-	private Double Longitude;
+	private Double latitude;
+	private Double longitude;
 	private String department;
 	private String ticketNumber;
 	private String state;
