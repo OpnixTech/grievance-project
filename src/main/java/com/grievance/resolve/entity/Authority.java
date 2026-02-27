@@ -36,6 +36,8 @@ public class Authority {
 	private String city;
 	private String district;
 	private String departmentType;
+	private double latitude;
+	private double longitude;
 	
 	@OneToMany(mappedBy = "assignedAuthority")
 	private List<Grievance> assignedGrievances;

@@ -1,6 +1,7 @@
 package com.grievance.resolve.repository;
 
 import java.lang.foreign.Linker.Option;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,7 @@ public interface AuthorityRepository extends JpaRepository<Authority, Long>{
 			);
 	
 	Optional<Authority> findByEmail(String email);
+	
+	List<Authority> findByDepartmentType(String departmentType);
 
 }

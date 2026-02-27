@@ -17,8 +17,8 @@ public class GrievanceDto {
 	private String username;
 	private String title;
 	private String description;
-	private Double latitude;
-	private Double longitude;
+	private double latitude;
+	private double longitude;
 	private String department;
 	private String ticketNumber;
 	private String state;
