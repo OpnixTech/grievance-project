@@ -13,5 +13,7 @@ public interface GrievanceRepository extends JpaRepository<Grievance, Long>{
 		List<Grievance> findByUsername(String username);
 		
 		Optional<Grievance> findByTicketNumber(String ticket);
+		
+		List<Grievance> findByAssignedAuthorityEmail(String email);
 	
 }

@@ -10,7 +10,7 @@ import com.grievance.resolve.entity.Authority;
 
 public interface AuthorityRepository extends JpaRepository<Authority, Long>{
 	
-	Optional<Authority> findByDepartmentTypeAndStateAndCityAndDistrict(
+	List<Authority> findByDepartmentTypeAndStateAndCityAndDistrict(
 			String departmentType,
 			String state,
 			String district,

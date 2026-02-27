@@ -1,17 +1,25 @@
 package com.grievance.resolve.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grievance.resolve.dto.AuthorityLoginDto;
+import com.grievance.resolve.dto.AuthorityUpdateDto;
 import com.grievance.resolve.entity.Authority;
+import com.grievance.resolve.entity.Grievance;
 import com.grievance.resolve.repository.AuthorityRepository;
+import com.grievance.resolve.repository.GrievanceRepository;
 
 @Service
 public class AuthorityService {
 
 	@Autowired
 	private AuthorityRepository authorityRepository;
+	
+	@Autowired
+	private GrievanceRepository grievanceRepository;
 
 	@Autowired
 	private OtpService otpService;
@@ -47,5 +55,25 @@ public class AuthorityService {
 
 				authority.getEmail(), authority.getRole().name());
 
+	}
+	
+	public String updateGrievance(AuthorityUpdateDto dto, String email) {
+		
+		Authority authority=
+				authorityRepository.findByEmail(email).orElseThrow(()->new RuntimeException("Authority Not Found"));
+		
+		Grievance grievance=
+				grievanceRepository.findByTicketNumber(dto.getTicketNumber()).orElseThrow(()-> new RuntimeException("Ticket not found"));
+		
+		if(!grievance.getAssignedAuthority()
+				.getId()
+				.equals(authority.getId())) {
+			throw new RuntimeException("Not your grievance");
+		}
+		grievance.setStatus(dto.getStatus());
+		grievance.setAuthorityRemark(dto.getAuthorityRemark());
+		grievance.setUpdatedAt(LocalDateTime.now());
+		grievanceRepository.save(grievance);
+		return "Updated Successfully";
 	}
 }

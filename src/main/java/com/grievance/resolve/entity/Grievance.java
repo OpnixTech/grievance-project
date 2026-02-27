@@ -42,6 +42,8 @@ public class Grievance {
 	private String district;
 	private String city;
 	private String issueType;
+	private String authorityRemark;
+	private LocalDateTime updatedAt;
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
