@@ -6,6 +6,7 @@ import org.hibernate.annotations.ManyToAny;
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
 import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -36,7 +37,10 @@ public class Grievance {
 	private String description;
 	private Double latitude;
 	private Double longitude;
-	private String department;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Department department;
 	private String ticketNumber;
 	private String state;
 	private String district;

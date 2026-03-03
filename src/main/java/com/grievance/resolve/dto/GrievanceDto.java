@@ -2,6 +2,7 @@ package com.grievance.resolve.dto;
 
 import java.time.LocalDateTime;
 
+import com.grievance.resolve.entity.Department;
 import com.grievance.resolve.entity.Status;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class GrievanceDto {
 	private String description;
 	private double latitude;
 	private double longitude;
-	private String department;
+	private Department department;
 	private String ticketNumber;
 	private String state;
 	private String district;

@@ -2,6 +2,7 @@ package com.grievance.resolve.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -35,7 +36,10 @@ public class Authority {
 	private String state;
 	private String city;
 	private String district;
-	private String departmentType;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Department departmentType;
 	private double latitude;
 	private double longitude;
 	

@@ -63,7 +63,7 @@ public class GrievanceService {
 		String datePart=LocalDateTime.now()
 				.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 		String randomPart=UUID.randomUUID().toString().substring(0,6).toUpperCase();
-		return "Tic"+datePart+randomPart;
+		return "TIC"+datePart+randomPart;
 	}
 	
 	public GrievanceDto getGrievanceByTicket(String ticket) {
