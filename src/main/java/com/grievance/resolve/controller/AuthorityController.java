@@ -1,6 +1,7 @@
 package com.grievance.resolve.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,10 +12,12 @@ import org.springframework.web.service.annotation.PutExchange;
 
 import com.grievance.resolve.dto.AuthorityLoginDto;
 import com.grievance.resolve.dto.AuthorityUpdateDto;
+import com.grievance.resolve.dto.OtpVerificationDto;
 import com.grievance.resolve.service.AuthorityService;
 
 @RestController
 @RequestMapping("/api/authority")
+@CrossOrigin(origins = "*")
 public class AuthorityController {
 	
 	@Autowired
@@ -23,6 +26,11 @@ public class AuthorityController {
 	@PostMapping("/login")
 	public String login(@RequestBody AuthorityLoginDto authorityLoginDto) {
 		return authorityService.login(authorityLoginDto);
+	}
+	
+	@PostMapping("/login/verify-otp")
+	public String verifyLogin(@RequestBody OtpVerificationDto otpVerificationDto) {
+		return authorityService.otpVerification(otpVerificationDto.getEmail(), otpVerificationDto.getOtp());
 	}
 	
 	@PutMapping("/update")

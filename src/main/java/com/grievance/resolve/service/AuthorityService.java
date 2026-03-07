@@ -26,6 +26,9 @@ public class AuthorityService {
 
 	@Autowired
 	private JwtService jwtService;
+	
+	@Autowired
+	private EmailService emailService;
 
 	public String login(AuthorityLoginDto loginDto) {
 		Authority authority = authorityRepository.findByEmail(loginDto.getEmail())
@@ -36,8 +39,11 @@ public class AuthorityService {
 		}
 
 		String otp = otpService.generateOtp(loginDto.getEmail());
+//		otpService.generateOtp(loginDto.getEmail());
+		emailService.sendOtpEmail(loginDto.getEmail(), otp);
 
-		return "OTP Generated: " + otp;
+//		return "OTP Generated: " + otp;
+		return "OTP sent to you on Email";
 
 	}
 
