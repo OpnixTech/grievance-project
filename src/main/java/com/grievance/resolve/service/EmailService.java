@@ -46,7 +46,7 @@ public class EmailService {
 
 	 public void sendOtpEmail(String to, String otp) throws java.io.IOException {
 		    try {
-		        Email from = new Email("no-reply@grievanceportal.com");
+		        Email from = new Email("dewangbackup1@gmail.com");
 		        String subject = "Your OTP Code from Grievance Portal";
 		        Email recipient = new Email(to);
 		        Content content = new Content("text/plain", "Your OTP is: " + otp);
