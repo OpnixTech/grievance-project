@@ -14,7 +14,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Expose your application port
-EXPOSE 9012
+EXPOSE 8080
 
 # Automatically detect and run the generated JAR file
 CMD ["sh", "-c", "java -jar target/*.jar"]
