@@ -1,5 +1,7 @@
 package com.grievance.resolve.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +27,7 @@ public class UserRegistrationController {
 	private UserRegistrationService userRegistrationService;
 
 	@PostMapping("/register")
-	public String register(@RequestBody UserRegistrationDto dto) {
+	public String register(@RequestBody UserRegistrationDto dto) throws IOException {
 		return userRegistrationService.register(dto);
 	}
 	

@@ -1,5 +1,6 @@
 package com.grievance.resolve.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class AuthorityService {
 	@Autowired
 	private EmailService emailService;
 
-	public String login(AuthorityLoginDto loginDto) {
+	public String login(AuthorityLoginDto loginDto) throws IOException {
 		Authority authority = authorityRepository.findByEmail(loginDto.getEmail())
 				.orElseThrow(() -> new RuntimeException("Authority not found"));
 

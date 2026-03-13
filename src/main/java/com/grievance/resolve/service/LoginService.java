@@ -1,5 +1,7 @@
 package com.grievance.resolve.service;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,7 @@ public class LoginService {
 	private EmailService emailService;
 	
 	
-	public String loginUserVerify(String username, String password) {
+	public String loginUserVerify(String username, String password) throws IOException {
 		UserRegistration user=registrationRepository.findByUsername(username).orElseThrow(()-> new RuntimeException("User not found"));
 		if(!passwordEncoder.matches(password, user.getPassword())) {
 			return "Invalid password";

@@ -1,5 +1,7 @@
 package com.grievance.resolve.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +26,7 @@ public class AuthorityController {
 	private AuthorityService authorityService;
 	
 	@PostMapping("/login")
-	public String login(@RequestBody AuthorityLoginDto authorityLoginDto) {
+	public String login(@RequestBody AuthorityLoginDto authorityLoginDto) throws IOException {
 		return authorityService.login(authorityLoginDto);
 	}
 	

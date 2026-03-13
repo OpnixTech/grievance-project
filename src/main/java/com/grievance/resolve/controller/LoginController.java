@@ -1,5 +1,7 @@
 package com.grievance.resolve.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@PostMapping("/login/password")
-	public String loginPassword(@Valid @RequestBody LoginRequestDto dto) {
+	public String loginPassword(@Valid @RequestBody LoginRequestDto dto) throws IOException {
 		return loginService.loginUserVerify(dto.getUsername(), dto.getPassword());
 	}
 	

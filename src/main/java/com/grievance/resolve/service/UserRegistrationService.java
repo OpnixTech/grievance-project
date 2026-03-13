@@ -1,5 +1,6 @@
 package com.grievance.resolve.service;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -35,7 +36,7 @@ public class UserRegistrationService {
 
     private final Map<String, UserRegistration> tempUsers = new HashMap<>();
 
-    public String register(UserRegistrationDto dto) {
+    public String register(UserRegistrationDto dto) throws IOException {
 
     	if (userRegistrationRepository.existsByEmail(dto.getEmail())) {
             return "Email already exists";
