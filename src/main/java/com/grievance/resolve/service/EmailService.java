@@ -46,7 +46,7 @@ public class EmailService {
 
 	 public void sendOtpEmail(String to, String otp) throws java.io.IOException {
 
-		    Email from = new Email("dewangbackup1@gmail.com");
+		    Email from = new Email("grievancedewang.upadhyay@outlook.com");
 		    String subject = "Your OTP Code from Grievance Portal";
 		    Email recipient = new Email(to);
 		    Content content = new Content("text/plain", "Your OTP is: " + otp);
@@ -55,6 +55,7 @@ public class EmailService {
 		    SendGrid sg = new SendGrid(SENDGRID_API_KEY);
 		    Request request = new Request();
 
+		    
 		    try {
 		        request.setMethod(Method.POST);
 		        request.setEndpoint("mail/send");
