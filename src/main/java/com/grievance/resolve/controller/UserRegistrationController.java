@@ -14,6 +14,7 @@ import com.grievance.resolve.dto.UserRegistrationDto;
 import com.grievance.resolve.dto.UserResponseDto;
 import com.grievance.resolve.service.UserRegistrationService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -27,7 +28,7 @@ public class UserRegistrationController {
 	private UserRegistrationService userRegistrationService;
 
 	@PostMapping("/register")
-	public String register(@RequestBody UserRegistrationDto dto) throws IOException {
+	public String register(@Valid @RequestBody UserRegistrationDto dto) throws IOException {
 		return userRegistrationService.register(dto);
 	}
 	
