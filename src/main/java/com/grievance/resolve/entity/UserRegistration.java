@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,14 +41,15 @@ public class UserRegistration {
 	private LocalDate dob;
 	
 	@NotBlank(message = "Phone number is mandatory")
-	private long phone;
+	@Pattern(regexp = "^[0-9]{10}$", message = "Phone must be 10 digits")
+	private String phone;
 	
 	@NotBlank(message = "Email is mandatory to proceed")
 	private String email;
 	
 	private String address;
 	
-	@NotBlank(message = "Enter OTP sent on registered mail")
+//	@NotBlank(message = "Enter OTP sent on registered mail")
 	private String otp;
 	
 	

@@ -33,7 +33,7 @@ public class UserRegistrationDto {
 	private LocalDate dob;
 	
 	@NotBlank(message = "Phone number is mandatory")
-	private long phone;
+	private String phone;
 	
 	@NotBlank(message = "Email is mandatory to proceed")
 	private String email;
